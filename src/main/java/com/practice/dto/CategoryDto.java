@@ -1,33 +1,46 @@
-package com.practice.entity;
+package com.practice.dto;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
-@MappedSuperclass
-public class BaseModel {
+@AllArgsConstructor
+@NoArgsConstructor
+public class CategoryDto {
+	private Integer id;
+	private String name;
+	private String description;
 	private Boolean isActive;
-	@Column(name="is_deleted")
-	private Boolean isDeleted=false;
+	//private Boolean isDeleted;
 	private Integer createdBy;
-	private Date createdOn;
+	private Date CreatedOn;
 	private Integer updatedBy;
 	private Date updatedOn;
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Boolean getIsActive() {
 		return isActive;
 	}
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
-	}
-	public Boolean getIsDeleted() {
-		return isDeleted;
-	}
-	public void setIsDeleted(Boolean isDeleted) {
-		this.isDeleted = isDeleted;
 	}
 	public Integer getCreatedBy() {
 		return createdBy;
@@ -36,10 +49,10 @@ public class BaseModel {
 		this.createdBy = createdBy;
 	}
 	public Date getCreatedOn() {
-		return createdOn;
+		return CreatedOn;
 	}
 	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+		CreatedOn = createdOn;
 	}
 	public Integer getUpdatedBy() {
 		return updatedBy;
@@ -53,5 +66,10 @@ public class BaseModel {
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
+	
+
 }
