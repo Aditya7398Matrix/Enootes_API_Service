@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.practice.dto.CategoryDto;
+import com.practice.dto.CategoryResponse;
 import com.practice.entity.Category;
 import com.practice.service.CategoryService;
 
@@ -21,8 +23,8 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	@PostMapping("/save-categories")
-	public ResponseEntity<?> saveCategory(@RequestBody Category category){
-	Boolean savecategory=categoryService.saveCategory(category);
+	public ResponseEntity<?> saveCategory(@RequestBody CategoryDto categorydto){
+	Boolean savecategory=categoryService.saveCategory(categorydto);
 	if(!savecategory) {
 		return new ResponseEntity<>("not saved ",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -31,7 +33,17 @@ public class CategoryController {
 	}
 	@GetMapping("/category")
 	public ResponseEntity<?> getAllCategory(){
-    List<Category> allcategory=categoryService.getAllCategories();
+    List<CategoryDto> allcategory=categoryService.getAllCategories();
+    if(CollectionUtils.isEmpty(allcategory)) {
+    	return ResponseEntity.noContent().build();
+		//return new ResponseEntity<>("no category found ",HttpStatus.NOT_FOUND);
+	}else {
+		return new ResponseEntity<>(allcategory,HttpStatus.OK);
+	}
+	}
+	@GetMapping("/active-category")
+	public ResponseEntity<?> getActiveCategory(){
+    List<CategoryResponse> allcategory=categoryService.getActiveCategories();
     if(CollectionUtils.isEmpty(allcategory)) {
     	return ResponseEntity.noContent().build();
 		//return new ResponseEntity<>("no category found ",HttpStatus.NOT_FOUND);

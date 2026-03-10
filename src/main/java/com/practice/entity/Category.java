@@ -21,36 +21,20 @@ public class Category extends BaseModel {
 	private int id;
 	private String name;
 	private String description;
-	
-	public void setIsDeleted(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public void setCreatedOn1(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void setCreatedOn(int i) {
-		// TODO Auto-generated method stub
-		
-	}
+	 public String getName() {
+	        return name;
+	    }
+
+	    public void setName(String name) {
+	        this.name = name;
+	    }
+
+	    public String getDescription() {
+	        return description;
+	    }
+
+	    public void setDescription(String description) {
+	        this.description = description;
+	    }
 
 }
